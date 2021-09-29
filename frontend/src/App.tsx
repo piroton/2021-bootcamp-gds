@@ -12,7 +12,8 @@ function App() {
       <NavigationBar />
       <Switch>
         <Route path="/todo">
-          <Todo></Todo>
+          <Todo>
+          </Todo>
         </Route>
         <Route path="/">
           <div className="App">
