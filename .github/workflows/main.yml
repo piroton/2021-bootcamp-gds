@@ -23,12 +23,12 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push the Frontend Docker Image
         run: |
-          docker build -t 2021-bootcamp-gds_frontend frontend
-          docker push ghcr.io/piroton/2021-bootcamp-gds_frontend:latest
+          docker build ./frontend --tag ghcr.io/${{ github.actor }}/2021-bootcamp-gds_frontend:${{ github.sha }}
+          docker push ghcr.io/${{ github.actor }}/2021-bootcamp-gds_frontend:${{ github.sha }}
       - name: Build and Push the Backend Docker Image
         run: |
-          docker build -t 2021-bootcamp-gds_backend backend
-          docker push ghcr.io/piroton/2021-bootcamp-gds_backend:latest
+          docker build ./backend ghcr.io/${{ github.actor }}/2021-bootcamp-gds_backend:${{ github.sha }}
+          docker push ghcr.io/${{ github.actor }}/2021-bootcamp-gds_backend:${{ github.sha }}
       # To make it easier to copy-paste the image later
       - name: Copy the images with their tags to your docker-compose.yml
         run: |
